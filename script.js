@@ -1,3 +1,7 @@
+// Global variables
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     // Assigns a random value from 0 - 2
     let index = Math.floor(Math.random() * 3);
@@ -11,14 +15,14 @@ function getHumanChoice() {
     return choice;
 }
 
-function playRound(humanChoice, computerChoice, scores) {
+function playRound(humanChoice, computerChoice) {
     // Losing cases
     if (
         (humanChoice.toLowerCase() === "rock" && computerChoice === "paper")
         || (humanChoice.toLowerCase() === "paper" && computerChoice === "scissors")
         || (humanChoice.toLowerCase() === "scissors" && computerChoice === "rock")
     ) {
-        scores[0]++;
+        computerScore++;
         alert("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase() + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase());
     }
     // Tie case
@@ -27,15 +31,12 @@ function playRound(humanChoice, computerChoice, scores) {
     }
     // Winning cases
     else {
-        scores[1]++;
+        humanScore++;
         alert("You win! " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase() + " beats " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase());
     }
-
-    return scores;
 }
 
 function playGame() {
-    let scores = [0, 0];
 
     // To play five rounds
     for (let i = 0; i < 5; i++) {
@@ -43,17 +44,17 @@ function playGame() {
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection, scores);
+        playRound(humanSelection, computerSelection);
     }
 
-    if (scores[0] > scores[1]) {
-        alert("The Computer Wins! Computer Score: " + scores[0] + "; Your Score: " + scores[1]);
+    if (computerScore > humanScore) {
+        alert("The Computer Wins! Computer Score: " + computerScore + "; Your Score: " + humanScore);
     }
-    else if (scores[0] === scores[1]) {
-        alert("Tie! Computer Score: " + scores[0] + "; Your Score: " + scores[1])
+    else if (computerScore === humanScore) {
+        alert("Tie! Computer Score: " + computerScore + "; Your Score: " + humanScore);
     }
     else {
-        alert("You Win! Computer Score: " + scores[0] + "; Your Score: " + scores[1]);   
+        alert("You Win! Computer Score: " + computerScore + "; Your Score: " + humanScore);   
     }
 }
 
