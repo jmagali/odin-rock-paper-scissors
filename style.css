@@ -23,6 +23,8 @@
     font-family: "Roboto", sans-serif;
 }
 
+/* HEADER */
+
 .header {
     display: flex;
     justify-content: center;
@@ -30,3 +32,22 @@
     background-color: var(--header);
     padding: 5vh;
 }
+
+.title {
+    font-size: 48px;
+    margin: 0 12px;
+    text-shadow: 0 0 5px var(--footer);
+}
+
+#text-rock {
+    color: var(--rock);
+}
+
+#text-paper {
+    color: var(--paper);
+}
+
+#text-scissors {
+    color: var(--scissors);
+}
+
