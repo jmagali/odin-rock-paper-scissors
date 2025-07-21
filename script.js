@@ -32,6 +32,9 @@ function playRound(playerChoice, enemyChoice) {
     }
 
     roundCount++;
+
+    updateRoundCount(roundCount);
+    updateScore(playerScore, enemyScore);
 }
 
 const roundCounter = document.getElementById("round-counter");
@@ -56,8 +59,6 @@ function onClick (playerChoice) {
     const enemyChoice = getEnemyChoice();
     playRound(playerChoice, enemyChoice);
     updateEnemyChoices(enemyChoice)
-    updateRoundCount(roundCount);
-    updateScore(playerScore, enemyScore);
     // TODO
 
     if (checkGameOver) {
