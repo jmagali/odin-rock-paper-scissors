@@ -42,3 +42,11 @@ const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const restart = document.getElementById("restart");
+
+function checkGameOver () {
+    if (playerScore === 5 || enemyScore === 5) {
+        return true;
+    }
+
+    return false;
+}
