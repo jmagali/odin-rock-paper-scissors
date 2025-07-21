@@ -4,6 +4,21 @@ let enemyScore = 0;
 let winner = "";
 let roundCount = 0;
 
+const roundCounter = document.getElementById("round-counter");
+const scoreMsg = document.getElementById("score-msg");
+const enemySign = document.getElementById("enemy-choice");
+const score = document.getElementById("score");
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const gameOverText = document.getElementById("game-over-text");
+const restart = document.getElementById("restart");
+
+rock.addEventListener("click", function() {onClick("rock");});
+paper.addEventListener("click", function() {onClick("paper");});
+scissors.addEventListener("click", function() {onClick("scissors");});
+restart.addEventListener("click", function () {window.location.reload();})
+
 function getEnemyChoice() {
     // Assigns a random value from 0 - 2
     let index = Math.floor(Math.random() * 3);
@@ -32,37 +47,20 @@ function playRound(playerChoice, enemyChoice) {
     }
 
     roundCount++;
-
-    updateRoundCount(roundCount);
-    updateScore(playerScore, enemyScore);
 }
 
-const roundCounter = document.getElementById("round-counter");
-const scoreMsg = document.getElementById("score-msg");
-const enemySign = document.getElementById("enemy-choice");
-const score = document.getElementById("score");
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const restart = document.getElementById("restart");
+function onClick (choice) {
+    if (!checkGameOver()) {
+        const enemyChoice = getEnemyChoice();
+        playRound(choice, enemyChoice);
+        updateEnemyChoices(enemyChoice)
+        updateRoundCount(roundCount);
+        updateScore(playerScore, enemyScore);
 
-rock.addEventListener("click", function() {onClick("rock")});
-paper.addEventListener("click", function() {onClick("paper")});
-scissors.addEventListener("click", function() {onClick("scissors")});
-
-function onClick (playerChoice) {
-    if (checkGameOver) {
-        // TODO
-        return;
-    }
-    
-    const enemyChoice = getEnemyChoice();
-    playRound(playerChoice, enemyChoice);
-    updateEnemyChoices(enemyChoice)
-    // TODO
-
-    if (checkGameOver) {
-        // TODO
+        if (checkGameOver()) {
+            setGameOverMessage(playerScore, enemyScore);
+            restart.style.visibility = "visible";
+        }
     }
 }
 
@@ -105,6 +103,17 @@ function updateScore (playerScore, enemyScore) {
 
 function updateRoundCount (roundCount) {
     roundCounter.textContent = `Round: ${roundCount}`;
+}
+
+function setGameOverMessage (playerScore, enemyScore) {
+    if (playerScore > enemyScore) {
+        gameOverText.textContent = "You Win!";
+        scoreMsg.style.color = "#2E8B8B";
+    }
+    else {
+        gameOverText.textContent = "You Lose!";
+        scoreMsg.style.color = "#FF6F61";
+    }
 }
 
 function checkGameOver () {
