@@ -55,6 +55,45 @@ function onClick (playerChoice) {
     
     const enemyChoice = getEnemyChoice();
     playRound(playerChoice, enemyChoice);
+    updateEnemyChoices(enemyChoice)
+    // TODO
+
+    if (checkGameOver) {
+        // TODO
+    }
+}
+
+function updateEnemyChoices (enemyChoice) {
+    switch (enemyChoice) {
+        case "rock":
+            enemySign.textContent = "🪨";
+            break;
+        case "paper":
+            enemySign.textContent = "📃";
+            break;
+        default:
+            enemySign.textContent = "✂️";
+    }
+}
+
+function capitalizeFirstCharacter (text) {
+    return text[0] + text.slice(1, text.length - 1);
+}
+
+function updateScoreMessage (winner, playerChoice, enemyChoice) {
+    switch (winner) {
+        case "tie":
+            scoreMsg.textContent = `It is a tie! You both chose ${playerChoice}`;
+            scoreMsg.style.color = "#414a4c";
+            break;
+        case "Player":
+            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} beats ${enemyChoice}`;
+            scoreMsg.style.color = "#2E8B8B";
+            break;
+        default:
+            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}`;
+            scoreMsg.style.color = "#FF6F61";
+    }       
 }
 
 function checkGameOver () {
