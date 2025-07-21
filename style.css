@@ -84,6 +84,7 @@
 #enemy-choice {
     font-size: 15vh;
     margin-bottom: 1vh;
+    text-shadow: 0 0 5px var(--footer);
 }
 
 .buttons {
@@ -108,6 +109,7 @@
     min-width: 30px;
     padding: 0.8em;
     flex: 1 1 auto;
+    text-shadow: 0 0 5px var(--footer);
 }
 
 #rock {
