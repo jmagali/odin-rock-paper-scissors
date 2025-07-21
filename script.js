@@ -39,6 +39,7 @@ function playRound(playerChoice, enemyChoice) {
     }
     // Tie case
     else if (playerChoice === enemyChoice) {
+        winner = "tie";
     }
     // Winning cases
     else {
