@@ -58,6 +58,36 @@
 .main {
     background-color: var(--main);
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
+}
+
+.score-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 3vh;
+}
+
+.score-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 3vh;
+    background-color: var(--header);
+    padding: 3vh;
+    border-radius: 10px;
+}
+
+#enemy-choice {
+    font-size: 10vh;
+    margin-bottom: 1vh;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vh;
+    gap: 8vw;
 }
