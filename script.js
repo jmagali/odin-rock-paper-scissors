@@ -43,6 +43,20 @@ const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const restart = document.getElementById("restart");
 
+rock.addEventListener("click", function() {onClick("rock")});
+paper.addEventListener("click", function() {onClick("paper")});
+scissors.addEventListener("click", function() {onClick("scissors")});
+
+function onClick (playerChoice) {
+    if (checkGameOver) {
+        // TODO
+        return;
+    }
+    
+    const enemyChoice = getEnemyChoice();
+    playRound(playerChoice, enemyChoice);
+}
+
 function checkGameOver () {
     if (playerScore === 5 || enemyScore === 5) {
         return true;
