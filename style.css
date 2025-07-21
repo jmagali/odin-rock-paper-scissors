@@ -21,6 +21,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+    color: #414a4c;
 }
 
 /* HEADER */
@@ -31,6 +32,7 @@
     align-items: center;
     background-color: var(--header);
     padding: 5vh;
+    flex-wrap: wrap;
 }
 
 .title {
@@ -51,3 +53,11 @@
     color: var(--scissors);
 }
 
+/* MAIN */ 
+
+.main {
+    background-color: var(--main);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
