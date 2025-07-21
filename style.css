@@ -1,3 +1,21 @@
+:root {
+  --header: #A9A9A9;
+  --main: #D3D3D3;
+  --footer: #808080;
+  --rock: #FF6F61;
+  --rock-hover: #FF9A8F;
+  --rock-active: #FFD6D1;
+  --paper: #4A90E2;
+  --paper-hover: #8ABAF0;
+  --paper-active: #CDE2F9;
+  --scissors: #2E8B8B;
+  --scissors-hover: #66B2B2;
+  --scissors-active: #B7E0E0;
+  --play-again: #848884;
+  --play-again-hover: #C0C0C0;
+  --play-again-active: #E5E4E2;
+}
+
 * {
     margin: 0;
     padding: 0;
