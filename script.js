@@ -2,6 +2,7 @@
 let playerScore = 0;
 let enemyScore = 0;
 let winner = "";
+let roundCount = 0;
 
 function getEnemyChoice() {
     // Assigns a random value from 0 - 2
@@ -29,5 +30,15 @@ function playRound(playerChoice, enemyChoice) {
         playerScore++;
         winner = "Player"
     }
+
+    roundCount++;
 }
 
+const roundCounter = document.getElementById("round-counter");
+const scoreMsg = document.getElementById("score-msg");
+const enemySign = document.getElementById("enemy-choice");
+const score = document.getElementById("score");
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const restart = document.getElementById("restart");
