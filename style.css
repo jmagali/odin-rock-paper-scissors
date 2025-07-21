@@ -77,10 +77,12 @@
     background-color: var(--header);
     padding: 3vh;
     border-radius: 10px;
+    width: 82vw;
+    border: 1vh solid #414a4c;
 }
 
 #enemy-choice {
-    font-size: 10vh;
+    font-size: 15vh;
     margin-bottom: 1vh;
 }
 
@@ -91,3 +93,18 @@
     margin-bottom: 3vh;
     gap: 8vw;
 }
+
+.sign {
+    width: 20vw;
+    height: 20vh;
+    font-size: 15vh;
+    border: 1vh solid #414a4c;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 10vw;
+}
+
+/* GAME OVER */
+
