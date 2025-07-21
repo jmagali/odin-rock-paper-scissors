@@ -184,12 +184,23 @@
     visibility: hidden;
     font-size: 3vh;
     border: 0.5vh solid #414a4c;
+    background-color: var(--play-again);
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2vh 2vw;
     margin-top: 2vh;
+}
+
+#restart:hover {
+    background-color: var(--play-again-hover);
+    font-size: 3.1vh;
+}
+
+#restart:active {
+    background-color: var(--play-again-active);
+    font-size: 3.2vh;
 }
 
 /* FOOTER */
