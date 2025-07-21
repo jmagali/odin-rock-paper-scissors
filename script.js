@@ -56,6 +56,7 @@ function onClick (choice) {
         updateEnemyChoices(enemyChoice)
         updateRoundCount(roundCount);
         updateScore(playerScore, enemyScore);
+        updateScoreMessage (winner, choice, enemyChoice);
 
         if (checkGameOver()) {
             setGameOverMessage(playerScore, enemyScore);
@@ -78,7 +79,7 @@ function updateEnemyChoices (enemyChoice) {
 }
 
 function capitalizeFirstCharacter (text) {
-    return text[0] + text.slice(1, text.length - 1);
+    return text[0] + text.slice(1, text.length);
 }
 
 function updateScoreMessage (winner, playerChoice, enemyChoice) {
