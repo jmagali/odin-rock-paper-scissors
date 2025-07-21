@@ -57,7 +57,9 @@
 /* MAIN */ 
 
 .main {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgGaSfq-9oX0C4-WyrEVCb5CSgU7D2i-yzgQ&s);
     background-color: var(--main);
+    background-blend-mode: overlay;
     display: flex;
     align-items: center;
     flex-direction: column;
