@@ -110,6 +110,7 @@
 
 #game-over {
     text-align: center;
+    margin-bottom: 10vh;;
 }
 
 #game-over-text {
@@ -117,6 +118,7 @@
 }
 
 #restart {
+    visibility: hidden;
     font-size: 3vh;
     border: 0.5vh solid #414a4c;
     border-radius: 10px;
@@ -124,5 +126,35 @@
     justify-content: center;
     align-items: center;
     padding: 2vh 2vw;
-    margin: 2vh 0;
+    margin-top: 2vh;
+}
+
+/* FOOTER */
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    height: 7vh;
+    width: 100vw;
+    background-color: var(--footer);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 0.5vh solid #414a4c;
+}
+
+.github {
+    height: 3.5vh;
+    width: auto;
+    margin-left: 10px;
+}
+
+.github:hover {
+    height: 3.7vh;
+}
+
+.github:active {
+    height: 3.8vh;
 }
