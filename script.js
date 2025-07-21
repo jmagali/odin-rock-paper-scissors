@@ -110,6 +110,9 @@ function setGameOverMessage (playerScore, enemyScore) {
         gameOverText.textContent = "You Win!";
         scoreMsg.style.color = "#2E8B8B";
     }
+    else if (playerScore === enemyScore) {
+        gameOverText.textContent = "Tie!";
+    }
     else {
         gameOverText.textContent = "You Lose!";
         scoreMsg.style.color = "#FF6F61";
