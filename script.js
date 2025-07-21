@@ -56,6 +56,8 @@ function onClick (playerChoice) {
     const enemyChoice = getEnemyChoice();
     playRound(playerChoice, enemyChoice);
     updateEnemyChoices(enemyChoice)
+    updateRoundCount(roundCount);
+    updateScore(playerScore, enemyScore);
     // TODO
 
     if (checkGameOver) {
@@ -91,9 +93,17 @@ function updateScoreMessage (winner, playerChoice, enemyChoice) {
             scoreMsg.style.color = "#2E8B8B";
             break;
         default:
-            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}`;
+            scoreMsg.textContent = `You lose! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}`;
             scoreMsg.style.color = "#FF6F61";
     }       
+}
+
+function updateScore (playerScore, enemyScore) {
+    score.textContent = `Player: ${playerScore} | Enemy: ${enemyScore}`;
+}
+
+function updateRoundCount (roundCount) {
+    roundCounter.textContent = `Round: ${roundCount}`;
 }
 
 function checkGameOver () {
