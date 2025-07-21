@@ -79,21 +79,21 @@ function updateEnemyChoices (enemyChoice) {
 }
 
 function capitalizeFirstCharacter (text) {
-    return text[0] + text.slice(1, text.length);
+    return text[0].toUpperCase() + text.slice(1, text.length);
 }
 
 function updateScoreMessage (winner, playerChoice, enemyChoice) {
     switch (winner) {
         case "tie":
-            scoreMsg.textContent = `It is a tie! You both chose ${playerChoice}`;
+            scoreMsg.textContent = `It is a tie! You both chose ${playerChoice}!`;
             scoreMsg.style.color = "#414a4c";
             break;
         case "Player":
-            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} beats ${enemyChoice}`;
+            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} beats ${enemyChoice}!`;
             scoreMsg.style.color = "#2E8B8B";
             break;
         default:
-            scoreMsg.textContent = `You lose! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}`;
+            scoreMsg.textContent = `You lose! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}!`;
             scoreMsg.style.color = "#FF6F61";
     }       
 }
