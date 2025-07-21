@@ -110,6 +110,62 @@
     flex: 1 1 auto;
 }
 
+#rock {
+    background-color: var(--rock);
+}
+
+#rock:hover {
+    background-color: var(--rock-hover);
+    width: 20.5vw;
+    height: 20.5vh;
+    font-size: 10.5em;
+}
+
+#rock:active {
+    background-color: var(--rock-active);
+    width: 21vw;
+    height: 21vh;
+    font-size: 11em;
+}
+
+#paper {
+    background-color: var(--paper);
+}
+
+#paper:hover {
+    background-color: var(--paper-hover);
+    width: 20.5vw;
+    height: 20.5vh;
+    font-size: 10.5em;
+}
+
+#paper:active {
+    background-color: var(--paper-active);
+    width: 21vw;
+    height: 21vh;
+    font-size: 11em;
+}
+
+#scissors {
+    background-color: var(--scissors);
+}
+
+#scissors:hover {
+    background-color: var(--scissors-hover);
+    width: 20.5vw;
+    height: 20.5vh;
+    font-size: 10.5em;
+}
+
+#scissors:active {
+    background-color: var(--scissors-active);
+    width: 21vw;
+    height: 21vh;
+    font-size: 11em;
+}
+
+
+
 /* GAME OVER */
 
 #game-over {
