@@ -1,8 +1,9 @@
 // Global variables
-let humanScore = 0;
-let computerScore = 0;
+let playerScore = 0;
+let enemyScore = 0;
+let winner = "";
 
-function getComputerChoice() {
+function getEnemyChoice() {
     // Assigns a random value from 0 - 2
     let index = Math.floor(Math.random() * 3);
     let choice = ["rock", "paper", "scissors"];
@@ -10,53 +11,23 @@ function getComputerChoice() {
     return choice[index];
 }
 
-function getHumanChoice() {
-    let choice = prompt("Please enter your choice ('rock', 'paper', or 'scissors')")
-    return choice;
-}
-
-function playRound(humanChoice, computerChoice) {
+function playRound(playerChoice, enemyChoice) {
     // Losing cases
     if (
-        (humanChoice.toLowerCase() === "rock" && computerChoice === "paper")
-        || (humanChoice.toLowerCase() === "paper" && computerChoice === "scissors")
-        || (humanChoice.toLowerCase() === "scissors" && computerChoice === "rock")
+        (playerChoice === "rock" && enemyChoice === "paper")
+        || (playerChoice === "paper" && enemyChoice === "scissors")
+        || (playerChoice === "scissors" && enemyChoice === "rock")
     ) {
-        computerScore++;
-        alert("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase() + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase());
+        enemyScore++;
+        winner = "Enemy";
     }
     // Tie case
-    else if (humanChoice.toLowerCase() === computerChoice.toLowerCase()) {
-        alert("Tie! You both chose " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase() + "!");
+    else if (playerChoice === enemyChoice) {
     }
     // Winning cases
     else {
-        humanScore++;
-        alert("You win! " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase() + " beats " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase());
+        playerScore++;
+        winner = "Player"
     }
 }
-
-function playGame() {
-
-    // To play five rounds
-    for (let i = 0; i < 5; i++) {
-        // To get the choices of the computer and user
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
-    }
-
-    if (computerScore > humanScore) {
-        alert("The Computer Wins! Computer Score: " + computerScore + "; Your Score: " + humanScore);
-    }
-    else if (computerScore === humanScore) {
-        alert("Tie! Computer Score: " + computerScore + "; Your Score: " + humanScore);
-    }
-    else {
-        alert("You Win! Computer Score: " + computerScore + "; Your Score: " + humanScore);   
-    }
-}
-
-playGame();
 
