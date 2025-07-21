@@ -1,8 +1,25 @@
 // Global variables
-let humanScore = 0;
-let computerScore = 0;
+let playerScore = 0;
+let enemyScore = 0;
+let winner = "";
+let roundCount = 0;
 
-function getComputerChoice() {
+const roundCounter = document.getElementById("round-counter");
+const scoreMsg = document.getElementById("score-msg");
+const enemySign = document.getElementById("enemy-choice");
+const score = document.getElementById("score");
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const gameOverText = document.getElementById("game-over-text");
+const restart = document.getElementById("restart");
+
+rock.addEventListener("click", function() {onClick("rock");});
+paper.addEventListener("click", function() {onClick("paper");});
+scissors.addEventListener("click", function() {onClick("scissors");});
+restart.addEventListener("click", function () {window.location.reload();})
+
+function getEnemyChoice() {
     // Assigns a random value from 0 - 2
     let index = Math.floor(Math.random() * 3);
     let choice = ["rock", "paper", "scissors"];
@@ -10,53 +27,104 @@ function getComputerChoice() {
     return choice[index];
 }
 
-function getHumanChoice() {
-    let choice = prompt("Please enter your choice ('rock', 'paper', or 'scissors')")
-    return choice;
-}
-
-function playRound(humanChoice, computerChoice) {
+function playRound(playerChoice, enemyChoice) {
     // Losing cases
     if (
-        (humanChoice.toLowerCase() === "rock" && computerChoice === "paper")
-        || (humanChoice.toLowerCase() === "paper" && computerChoice === "scissors")
-        || (humanChoice.toLowerCase() === "scissors" && computerChoice === "rock")
+        (playerChoice === "rock" && enemyChoice === "paper")
+        || (playerChoice === "paper" && enemyChoice === "scissors")
+        || (playerChoice === "scissors" && enemyChoice === "rock")
     ) {
-        computerScore++;
-        alert("You lose! " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase() + " beats " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase());
+        enemyScore++;
+        winner = "Enemy";
     }
     // Tie case
-    else if (humanChoice.toLowerCase() === computerChoice.toLowerCase()) {
-        alert("Tie! You both chose " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase() + "!");
+    else if (playerChoice === enemyChoice) {
+        winner = "tie";
     }
     // Winning cases
     else {
-        humanScore++;
-        alert("You win! " + humanChoice[0].toUpperCase() + humanChoice.slice(1, humanChoice.length).toLowerCase() + " beats " + computerChoice[0].toUpperCase() + computerChoice.slice(1, computerChoice.length).toLowerCase());
+        playerScore++;
+        winner = "Player"
+    }
+
+    roundCount++;
+}
+
+function onClick (choice) {
+    if (!checkGameOver()) {
+        const enemyChoice = getEnemyChoice();
+        playRound(choice, enemyChoice);
+        updateEnemyChoices(enemyChoice)
+        updateRoundCount(roundCount);
+        updateScore(playerScore, enemyScore);
+        updateScoreMessage (winner, choice, enemyChoice);
+
+        if (checkGameOver()) {
+            setGameOverMessage(playerScore, enemyScore);
+            restart.style.visibility = "visible";
+        }
     }
 }
 
-function playGame() {
-
-    // To play five rounds
-    for (let i = 0; i < 5; i++) {
-        // To get the choices of the computer and user
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);
+function updateEnemyChoices (enemyChoice) {
+    switch (enemyChoice) {
+        case "rock":
+            enemySign.textContent = "🪨";
+            break;
+        case "paper":
+            enemySign.textContent = "📃";
+            break;
+        default:
+            enemySign.textContent = "✂️";
     }
+}
 
-    if (computerScore > humanScore) {
-        alert("The Computer Wins! Computer Score: " + computerScore + "; Your Score: " + humanScore);
+function capitalizeFirstCharacter (text) {
+    return text[0].toUpperCase() + text.slice(1, text.length);
+}
+
+function updateScoreMessage (winner, playerChoice, enemyChoice) {
+    switch (winner) {
+        case "tie":
+            scoreMsg.textContent = `It is a tie! You both chose ${playerChoice}!`;
+            scoreMsg.style.color = "#414a4c";
+            break;
+        case "Player":
+            scoreMsg.textContent = `You won! ${capitalizeFirstCharacter(playerChoice)} beats ${enemyChoice}!`;
+            scoreMsg.style.color = "#2E8B8B";
+            break;
+        default:
+            scoreMsg.textContent = `You lose! ${capitalizeFirstCharacter(playerChoice)} loses to ${enemyChoice}!`;
+            scoreMsg.style.color = "#FF6F61";
+    }       
+}
+
+function updateScore (playerScore, enemyScore) {
+    score.textContent = `Player: ${playerScore} | Enemy: ${enemyScore}`;
+}
+
+function updateRoundCount (roundCount) {
+    roundCounter.textContent = `Round: ${roundCount}`;
+}
+
+function setGameOverMessage (playerScore, enemyScore) {
+    if (playerScore > enemyScore) {
+        gameOverText.textContent = "You Win!";
+        gameOverText.style.color = "#2E8B8B";
     }
-    else if (computerScore === humanScore) {
-        alert("Tie! Computer Score: " + computerScore + "; Your Score: " + humanScore);
+    else if (playerScore === enemyScore) {
+        gameOverText.textContent = "Tie!";
     }
     else {
-        alert("You Win! Computer Score: " + computerScore + "; Your Score: " + humanScore);   
+        gameOverText.textContent = "You Lose!";
+        gameOverText.style.color = "#FF6F61";
     }
 }
 
-playGame();
+function checkGameOver () {
+    if (playerScore === 5 || enemyScore === 5) {
+        return true;
+    }
 
+    return false;
+}
