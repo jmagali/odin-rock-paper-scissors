@@ -108,3 +108,21 @@
 
 /* GAME OVER */
 
+#game-over {
+    text-align: center;
+}
+
+#game-over-text {
+    font-size: 5vh;
+}
+
+#restart {
+    font-size: 3vh;
+    border: 0.5vh solid #414a4c;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh 2vw;
+    margin: 2vh 0;
+}
